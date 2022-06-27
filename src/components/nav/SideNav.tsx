@@ -17,7 +17,7 @@ import CreateNewCollection from "../contextMenu/item/CreateNewCollection";
 import WrapperLogout from "../logout/WrapperLogout";
 const SideNav = () => {
   return (
-    <nav className="hidden lg:visible min-h-100 overflow-x-hidden">
+    <nav className="hidden lg:visible h-screen overflow-x-hidden">
       <div
         className="bg-black flex flex-col space-between  min-h-100 py-20 z-2"
         style={{ paddingLeft: 20 }}
