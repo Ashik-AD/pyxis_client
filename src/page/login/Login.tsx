@@ -1,7 +1,6 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { IoLockClosed, IoMail } from "react-icons/io5";
-import FormBanner from "../../components/form/FormBanner";
 import FormFooter from "../../components/form/FormFooter";
 import FormHeader from "../../components/form/FormHeader";
 import FormWrapper from "../../components/form/FormWrapper";
@@ -103,7 +102,6 @@ const Login: React.FC = () => {
   }
   return (
     <FormWrapper>
-      <FormBanner />
       <form
         onSubmit={handleFormSubmit}
         autoComplete="OFF"

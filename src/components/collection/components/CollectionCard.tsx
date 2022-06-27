@@ -39,6 +39,7 @@ const CollectionCard: FC<PropsType> = (props) => {
           src={noImage.collection}
           alt={playlist_name}
           className="w-full rounded-regular select-none"
+          style={{ minHeight: 150 }}
         />
       </Link>
       <span

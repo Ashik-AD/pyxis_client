@@ -17,7 +17,6 @@ import WatchList from "../watchList/WatchList";
 import Profile from "../profile/Profile";
 import isConnectionAvailable from "../../utils/isConnAvailable";
 import MobileNav from "../../components/nav/MobileNav";
-import SkeletonFullSlideHeading from "../../components/skeleton/SkeletonFullSlideHeading";
 const Home: FC = () => {
   const { store, dispatch } = useContext(StoreContext);
   useEffect(() => {
@@ -40,7 +39,7 @@ const Home: FC = () => {
       <div className="sm:hidden">
         <MobileNav />
       </div>
-      {store.user ? (
+      {store.user && (
         <section className="content_container h-screen overflow-y-scroll w-full">
           {isConnectionAvailable() && (
             <Routes>
@@ -62,8 +61,6 @@ const Home: FC = () => {
             </Routes>
           )}
         </section>
-      ) : (
-        <SkeletonFullSlideHeading />
       )}
     </section>
   );

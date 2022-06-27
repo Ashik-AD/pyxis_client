@@ -7,20 +7,9 @@ import DiscoverCard from "./DiscoverCard";
 
 const DiscoverLists: React.FC = () => {
   const { data, loading, error } = useFetch("/discover/genre");
-  if (loading)
-    return (
-      <div className="grid col-2 sm:col-5 pt-50 px-20 sm:px-50 gap-20 overflow-hidden -z-1">
-        <SkeletonElement classNames="h-120 rounded-lg" />
-        <SkeletonElement classNames="h-120 rounded-lg" />
-        <SkeletonElement classNames="h-120 rounded-lg" />
-        <SkeletonElement classNames="h-120 rounded-lg" />
-        <SkeletonElement classNames="h-120 rounded-lg" />
-        <SkeletonElement classNames="h-120 rounded-lg" />
-        <SkeletonElement classNames="h-120 rounded-lg" />
-        <SkeletonElement classNames="h-120 rounded-lg" />
-      </div>
-    );
-  if (!data) return null;
+  if (loading) return <LoadingSkeleton />;
+
+  if (!data) return <LoadingSkeleton />;
   if (error) return <h1>Something went wrong</h1>;
   return (
     <section className="flex flex-col px-20 sm:px-50 py-20 gap-20">
@@ -59,5 +48,24 @@ const DiscoverLists: React.FC = () => {
 };
 
 const randomNo = () => Math.floor(Math.random() * colorLists.length);
+
+const LoadingSkeleton = () => {
+  return (
+    <div className="grid col-2 sm:col-5 pt-50 px-20 sm:px-50 gap-20 overflow-hidden -z-1">
+      <SkeletonElement classNames="h-120 rounded-lg" />
+      <SkeletonElement classNames="h-120 rounded-lg" />
+      <SkeletonElement classNames="h-120 rounded-lg" />
+      <SkeletonElement classNames="h-120 rounded-lg" />
+      <SkeletonElement classNames="h-120 rounded-lg" />
+      <SkeletonElement classNames="h-120 rounded-lg" />
+      <SkeletonElement classNames="h-120 rounded-lg" />
+      <SkeletonElement classNames="h-120 rounded-lg" />
+      <SkeletonElement classNames="h-120 rounded-lg" />
+      <SkeletonElement classNames="h-120 rounded-lg" />
+      <SkeletonElement classNames="h-120 rounded-lg" />
+      <SkeletonElement classNames="h-120 rounded-lg" />
+    </div>
+  );
+};
 
 export default React.memo(DiscoverLists);

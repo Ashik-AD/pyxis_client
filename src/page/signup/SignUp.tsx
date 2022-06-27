@@ -17,7 +17,6 @@ import SelectCountry from "../../components/form/SelectCountry";
 import monthLists from "../../utils/monthLists";
 import Loading from "./components/Loading";
 import FormHeader from "../../components/form/FormHeader";
-import FormBanner from "../../components/form/FormBanner";
 import FormWrapper from "../../components/form/FormWrapper";
 import FormFooter from "../../components/form/FormFooter";
 
@@ -373,7 +372,7 @@ const SignUp: React.FC = () => {
                   <input
                     type="button"
                     value={count < 3 ? "Next" : "Create Account"}
-                    className={`py-10 px-50 font-semibold text-medium color-success bg-white rounded-lg border-2 border-gray-light hover-bg-light cursor-pointer `}
+                    className={`py-10 px-50 font-semibold text-medium color-success rounded-lg border-2 border-gray-light hover-bg-fade cursor-pointer bg-transparent`}
                     onClick={handleNext}
                   />
                 </div>

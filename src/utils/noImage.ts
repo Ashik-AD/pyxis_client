@@ -1,5 +1,5 @@
 export const noImage = (() => {
-  const base = 'http://localhost:9000/t/q';
+  const base = 'https://pyxis-heroku.herokuapp.com/t/q';
   return {
     female: `${base}/ks23zkdsiw32f.jpg`,
     male: `${base}/ks23zkdsiw32m.jpg`,

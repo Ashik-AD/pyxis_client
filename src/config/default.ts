@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { storage } from '../utils/storage';
 export const AxiosConfig = () => {
-  axios.defaults.baseURL = 'http://localhost:9000';
+  axios.defaults.baseURL = 'https://pyxis-heroku.herokuapp.com/';
   axios.interceptors.request.use(
     (config) => {
       const localStore = storage.getItems();

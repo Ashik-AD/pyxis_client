@@ -1,21 +1,14 @@
-import React, { FC, SyntheticEvent, useEffect, useState } from "react";
+import React, { FC, useContext } from "react";
 import FullPageSlide from "../../../components/slider/FullPageSlide";
 import CardLargeSliderWithStore from "../../../components/slider/CardLargeSliderWithStore";
 import CardRegularSliderWithStore from "../../../components/slider/CardRegularSliderWithStore";
 import Title from "../../../components/cards/Title";
-
+import { StoreContext } from "../../../store/Store";
 const TvContainer: FC = () => {
-  const [loadContent, setLoadContent] = useState(false);
-  //   const container = document.querySelector(
-  //     ".content_container"
-  //   )! as HTMLDivElement;
-  //   const eventId = container.addEventListener("scroll", (eve) => {
-  //     console.log(eve);
-  //   });
-  //   useEffect(() => {
-  //     // container.removeEventListener("scroll", eventId);
-  //   }, []);
-  if (true) return null;
+  const {
+    store: { movie_full, topMovie, playingMovie },
+  } = useContext(StoreContext);
+  if (!movie_full || !topMovie || !playingMovie) return null;
   return (
     <div className="tv-container flex flex-col">
       <FullPageSlide url="/tv/popular/" media_type="tv" store_key="tv_full" />

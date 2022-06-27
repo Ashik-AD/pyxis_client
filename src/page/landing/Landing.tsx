@@ -7,7 +7,7 @@ const Landing = () => {
     <section
       className="h-screen w-screen bg-cover bg-center"
       style={{
-        backgroundImage: `url(http://localhost:9000/t/b/banner.jpeg)`,
+        backgroundImage: `url(https://pyxis-heroku.herokuapp.com/t/b/banner.jpeg)`,
       }}
     >
       <div
@@ -29,7 +29,7 @@ const Landing = () => {
             />
           </>
         </Link>
-        <div className="flex flex-col gap-40 w-75 sm:w-60">
+        <div className="flex flex-col gap-40 w-full sm:w-60">
           <div className="color-white text-lg sm:text-heading font-semibold text-center">
             Join the world of Movie & TV shows where you find all the
             information you looking.

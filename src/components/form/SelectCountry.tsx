@@ -15,7 +15,9 @@ const SelectCountry: React.FC<CountryProps> = (props) => {
   useEffect(() => {
     let fetchCountry = null;
     fetchCountry = async () => {
-      const { data } = await axios.get("http://localhost:9000/country/all");
+      const { data } = await axios.get(
+        "https://pyxis-heroku.herokuapp.com/country/all"
+      );
       setCountryList(data);
     };
     fetchCountry();
