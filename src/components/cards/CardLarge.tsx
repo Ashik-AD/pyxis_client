@@ -16,16 +16,14 @@ const CardLarge: React.FC<CardPropTypes> = (props) => {
       <div
         className="poster_wrapper flex w-full h-150 sm:h-200 rounded-xlg bg-center bg-cover no-repeat relative overflow-hidden hover-fade-half transition "
         style={{
-          background: `url(${
-            backdrop ? imageUrlWithSize(backdrop, "300") : noImage.default
+          background: `linear-gradient(0deg, #000 10%, transparent), url(${
+            backdrop ? imageUrlWithSize(backdrop, "342") : noImage.default
           })`,
         }}
       >
         <div
           className="absolute flex content-bottom w-full bottom-0 left-0 px-20"
           style={{
-            background:
-              "linear-gradient(0deg, #000000de 40%, #000000a1, transparent)",
             height: "50%",
             paddingBottom: 10,
           }}

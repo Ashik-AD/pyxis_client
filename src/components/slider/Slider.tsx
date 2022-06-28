@@ -45,14 +45,14 @@ const SliderMain = (props: any) => {
       {
         breakpoint: 670,
         settings: {
-          slidesToShow: 4.3,
-          slidesToScroll: 3,
+          slidesToShow: 4,
+          slidesToScroll: 4,
         },
       },
       {
         breakpoint: 464,
         settings: {
-          slidesToShow: 2.1,
+          slidesToShow: 2,
           slidesToScroll: 2,
         },
       },
@@ -61,6 +61,7 @@ const SliderMain = (props: any) => {
   return (
     <Slider
       {...settings}
+      swipe={true}
       nextArrow={<SliderArrow />}
       prevArrow={<SliderArrow />}
     >

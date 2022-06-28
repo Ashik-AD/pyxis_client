@@ -9,14 +9,14 @@ const settings = {
     {
       breakpoint: 3000,
       settings: {
-        slidesToShow: 12.2,
+        slidesToShow: 12,
         slidesToScroll: 12,
       },
     },
     {
       breakpoint: 1920,
       settings: {
-        slidesToShow: 7.2,
+        slidesToShow: 7,
         slidesToScroll: 7,
       },
     },
@@ -37,21 +37,21 @@ const settings = {
     {
       breakpoint: 1024,
       settings: {
-        slidesToShow: 2.5,
+        slidesToShow: 2,
         slidesToScroll: 2,
       },
     },
     {
       breakpoint: 670,
       settings: {
-        slidesToShow: 2.1,
+        slidesToShow: 2,
         slidesToScroll: 2,
       },
     },
     {
       breakpoint: 464,
       settings: {
-        slidesToShow: 1.1,
+        slidesToShow: 1,
         slidesToScroll: 1,
       },
     },
