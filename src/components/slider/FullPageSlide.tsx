@@ -1,5 +1,4 @@
 import React, { useContext, FC, useEffect } from "react";
-import Carousel from "react-multi-carousel";
 
 import { STORE_KEY } from "../../store/storeType";
 import { cleanupTv } from "../../utils/cleanupTv";
@@ -8,24 +7,13 @@ import { StoreContext } from "../../store/Store";
 import { ax } from "../../config/default";
 import FullPage from "../mainSlide/FullPage";
 import FullPagePropsType from "../types/fullpage";
-import SkeletonFullSlideHeading from "../skeleton/SkeletonFullSlideHeading";
-const carouselOptions = {
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 1,
-    slidesToSlide: 1,
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 1,
-    slidesToSlide: 1,
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 1,
-    slidesToSlide: 1,
-  },
-};
+const SkeletonFullSlideHeading = React.lazy(
+  () => import("../skeleton/SkeletonFullSlideHeading")
+);
+
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
 
 const FullPageSlide: FC<PropTypes> = ({ url, store_key, media_type }) => {
   const { store, dispatch } = useContext(StoreContext);
@@ -46,41 +34,41 @@ const FullPageSlide: FC<PropTypes> = ({ url, store_key, media_type }) => {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  if (!store[store_key]) return null;
-  if (!store.movie_full) {
+  var settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    fade: true,
+    arrows: false,
+  };
+  if (!store[store_key]) {
     return <SkeletonFullSlideHeading />;
   }
-  return (
-    <Carousel
-      responsive={carouselOptions}
-      autoPlaySpeed={10000}
-      infinite={true}
-      autoPlay={true}
-      arrows={false}
-    >
-      {store[store_key] &&
-        (media_type === "movie"
-          ? store.movie_full.map((el: FullPagePropsType) => (
-              <FullPage
-                key={el.id}
-                {...el}
-                media_type="movie"
-                detail_url={getDetailUrl(el.id, media_type, el.title)}
-                trailer_url={`trailer/${media_type}/${el.id}`}
-              />
-            ))
-          : cleanupTv(store.tv_full).map((el: TvFullPageSlideProps) => (
-              <FullPage
-                key={el.id}
-                {...el}
-                media_type="tv"
-                backdrop={el.backdrop}
-                detail_url={getDetailUrl(el.id, media_type, el.title)}
-                trailer_url={`trailer/${media_type}/${el.id}`}
-              />
-            )))}
-    </Carousel>
-  );
+  const items = () => {
+    return media_type === "movie"
+      ? store.movie_full.map((el: FullPagePropsType) => (
+          <FullPage
+            key={el.id}
+            {...el}
+            media_type="movie"
+            detail_url={getDetailUrl(el.id, media_type, el.title)}
+            trailer_url={`trailer/${media_type}/${el.id}`}
+          />
+        ))
+      : cleanupTv(store.tv_full).map((el: TvFullPageSlideProps) => (
+          <FullPage
+            key={el.id}
+            {...el}
+            media_type="tv"
+            backdrop={el.backdrop}
+            detail_url={getDetailUrl(el.id, media_type, el.title)}
+            trailer_url={`trailer/${media_type}/${el.id}`}
+          />
+        ));
+  };
+  return <Slider {...settings}>{items()}</Slider>;
 };
 const getDetailUrl = (
   id: number | string,
@@ -93,4 +81,4 @@ interface PropTypes extends STORE_KEY {
   url: string;
   media_type: "movie" | "tv";
 }
-export default React.memo(FullPageSlide);
+export default FullPageSlide;

@@ -22,10 +22,10 @@ const CardSlider: React.FC<PropTypes> = (props) => {
           )}`}
         />
       ))}
-      <SeeMore
+      {/* <SeeMore
         url={props.url}
         className="flex content-center color-info text-regular font-semibold h-full w-100"
-      />
+      /> */}
     </Slider>
   );
 };

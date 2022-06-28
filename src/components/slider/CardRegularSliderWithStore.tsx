@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from "react";
-import "react-multi-carousel/lib/styles.css";
 import { ax } from "../../config/default";
 import { StoreContext } from "../../store/Store";
 import { STORE_ITEM_TYPE, STORE_KEY } from "../../store/storeType";
@@ -54,7 +53,7 @@ const CardRegularSliderWithStore: React.FC<PropTypes> = ({
             )}}`}
           />
         ))}
-      <SeeMore url={url} />
+      {/* <SeeMore url={url} /> */}
     </Slider>
   );
 };

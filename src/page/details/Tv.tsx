@@ -2,7 +2,6 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
-import { imageUrl } from "../../utils/imageUrl";
 import DisplayItem from "../../components/details/DisplayItem";
 import PersonSlide from "../../components/slider/PersonSlide";
 import Keywords from "../../components/details/Keywords";

@@ -24,7 +24,7 @@ const CardLargeSlider: React.FC<PropTypes> = (props) => {
           )}}`}
         />
       ))}
-      <SeeMore url={props.url} />
+      {/* <SeeMore url={props.url} /> */}
     </SliderLg>
   );
 };

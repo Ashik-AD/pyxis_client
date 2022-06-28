@@ -1,25 +1,57 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import useFetch from '../../hooks/useFetch';
-import Carousel from 'react-multi-carousel';
-
-import { RiPlayMiniFill } from 'react-icons/ri';
-const carouselOptions = {
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 3,
-    slidesToSlide: 3,
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 2,
-    slidesToSlide: 2,
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 1,
-    slidesToSlide: 1,
-  },
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import useFetch from "../../hooks/useFetch";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+const SliderArrow = React.lazy(() => import("../slider/SliderArrow"));
+import Slider from "react-slick";
+import { RiPlayMiniFill } from "react-icons/ri";
+const settings = {
+  dots: false,
+  responsive: [
+    {
+      breakpoint: 1920,
+      settings: {
+        slidesToShow: 8,
+        slidesToScroll: 8,
+      },
+    },
+    {
+      breakpoint: 1620,
+      settings: {
+        slidesToShow: 6,
+        slidesToScroll: 6,
+      },
+    },
+    {
+      breakpoint: 1400,
+      settings: {
+        slidesToShow: 5,
+        slidesToScroll: 5,
+      },
+    },
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 4,
+        slidesToScroll: 4,
+      },
+    },
+    {
+      breakpoint: 670,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+      },
+    },
+    {
+      breakpoint: 464,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+      },
+    },
+  ],
 };
 const TrailerLists: React.FC<{ url: string; color?: string }> = (props) => {
   const { data, loading, error } = useFetch(props.url);
@@ -31,27 +63,29 @@ const TrailerLists: React.FC<{ url: string; color?: string }> = (props) => {
     navigation(`trailer/${id}`, { replace: true });
   };
   return (
-    <Carousel
-      responsive={carouselOptions}
-      autoPlay={false}
-      shouldResetAutoplay={true}>
+    <Slider
+      // shouldResetAutoplay={true}
+      {...settings}
+    >
       {data.results.map((el: any) => (
         <div
           key={el.id}
-          className='flex content-center h-200 bg-cover cursor-pointer hover-scaleup transition-1 mx-6'
+          className="flex content-center h-200 bg-cover cursor-pointer hover-scaleup transition-1 mx-6"
           style={{
             background: `url(https://i.ytimg.com/vi/${el.key}/hqdefault.jpg)`,
-            backgroundPosition: 'center',
+            backgroundPosition: "center",
           }}
-          onClick={() => handleNav(el.key)}>
+          onClick={() => handleNav(el.key)}
+        >
           <span
-            className='rounded-full flex content-center text-heading overflow-hidden hover-fade-half'
-            style={{ background: props.color, height: 40, width: 40 }}>
+            className="rounded-full flex content-center text-heading overflow-hidden hover-fade-half"
+            style={{ background: props.color, height: 40, width: 40 }}
+          >
             <RiPlayMiniFill />
           </span>
         </div>
       ))}
-    </Carousel>
+    </Slider>
   );
 };
 

@@ -41,7 +41,7 @@ const FullPageHeading: React.FC<FullPagePropsType> = (props) => {
             <div className="grid col-4 w-full pb-50">
               {/* Title and Date */}
               <div
-                className="flex span-3 content-bottom pb-50"
+                className="flex span-3 text-left content-bottom pb-50"
                 style={{ paddingRight: 20 }}
               >
                 <div className="flex flex-col gap-20 lg:gap-40">

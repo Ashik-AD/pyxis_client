@@ -1,46 +1,72 @@
 import React from "react";
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
-
-const Slider = (props: any) => {
-  const responsive = {
-    dekstopUlatra: {
-      breakpoint: { max: 3000, min: 1920 },
-      items: 12,
-      slidesToSlide: 12,
-    },
-    desktopLarge: {
-      breakpoint: { max: 1920, min: 1400 },
-      items: 7,
-      slidesToSlide: 7,
-    },
-    desktop: {
-      breakpoint: { max: 1400, min: 1024 },
-      items: 6,
-      slidesToSlide: 6,
-      partialVisibilityGutter: 40,
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 4.5,
-      slidesToSlide: 3,
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 2.1,
-      slidesToSlide: 2,
-    },
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+const SliderArrow = React.lazy(() => import("./SliderArrow"));
+const SliderMain = (props: any) => {
+  const settings = {
+    dots: false,
+    responsive: [
+      {
+        breakpoint: 3000,
+        settings: {
+          slidesToShow: 18,
+          slidesToScroll: 18,
+        },
+      },
+      {
+        breakpoint: 1920,
+        settings: {
+          slidesToShow: 12,
+          slidesToScroll: 12,
+        },
+      },
+      {
+        breakpoint: 1620,
+        settings: {
+          slidesToShow: 9,
+          slidesToScroll: 9,
+        },
+      },
+      {
+        breakpoint: 1400,
+        settings: {
+          slidesToShow: 7,
+          slidesToScroll: 7,
+        },
+      },
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 5,
+          slidesToScroll: 5,
+        },
+      },
+      {
+        breakpoint: 670,
+        settings: {
+          slidesToShow: 4.3,
+          slidesToScroll: 3,
+        },
+      },
+      {
+        breakpoint: 464,
+        settings: {
+          slidesToShow: 2.1,
+          slidesToScroll: 2,
+        },
+      },
+    ],
   };
   return (
-    <Carousel
-      responsive={responsive}
-      autoPlay={false}
-      shouldResetAutoplay={false}
-      swipeable={true}
+    <Slider
+      {...settings}
+      nextArrow={<SliderArrow />}
+      prevArrow={<SliderArrow />}
     >
       {props.children}
-    </Carousel>
+    </Slider>
   );
 };
 
-export default Slider;
+export default SliderMain;

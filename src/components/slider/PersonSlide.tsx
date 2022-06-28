@@ -1,38 +1,59 @@
 import React from "react";
 
-import Carousel from "react-multi-carousel";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+const SliderArrow = React.lazy(() => import("./SliderArrow"));
+
 import useFetch from "../../hooks/useFetch";
 import { imageUrlWithSize } from "../../utils/imageUrl";
 import PersonCard from "../cards/PersonCard";
-export const carouselOptions = {
-  responsive: {
-    desktopLarge: {
-      breakpoint: { max: 3000, min: 1920 },
-      items: 12,
-      slidesToSlide: 10,
+export const settings = {
+  dots: false,
+  responsive: [
+    {
+      breakpoint: 1920,
+      settings: {
+        slidesToShow: 12,
+        slidesToScroll: 12,
+      },
     },
-    desktop: {
-      breakpoint: { max: 1400, min: 1024 },
-      items: 5,
-      slidesToSlide: 5,
+    {
+      breakpoint: 1620,
+      settings: {
+        slidesToShow: 10,
+        slidesToScroll: 10,
+      },
     },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 4,
-      slidesToSlide: 3,
+    {
+      breakpoint: 1400,
+      settings: {
+        slidesToShow: 6,
+        slidesToScroll: 6,
+      },
     },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 2,
-      slidesToSlide: 2,
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 4,
+        slidesToScroll: 4,
+      },
     },
-  },
-  autoPlay: false,
-  swipeable: true,
-  pauseOnHover: true,
-  autoPlaySpeed: 10000,
-  partialVisible: true,
-  shouldResetAutoplay: true,
+    {
+      breakpoint: 670,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+      },
+    },
+    {
+      breakpoint: 464,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+      },
+    },
+  ],
 };
 const PersonSlide: React.FC<PropTypes> = (props) => {
   let { data, loading, error } = useFetch(props.url);
@@ -43,7 +64,11 @@ const PersonSlide: React.FC<PropTypes> = (props) => {
     data = props.items;
   }
   return (
-    <Carousel {...carouselOptions}>
+    <Slider
+      {...settings}
+      nextArrow={<SliderArrow />}
+      prevArrow={<SliderArrow />}
+    >
       {data.map((el: any) => (
         <PersonCard
           id={el.id}
@@ -57,7 +82,7 @@ const PersonSlide: React.FC<PropTypes> = (props) => {
           gender={el.gender}
         />
       ))}
-    </Carousel>
+    </Slider>
   );
 };
 interface PropTypes {
